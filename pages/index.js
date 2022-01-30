@@ -1,4 +1,5 @@
 import { Box, Button, Text, TextField, Image } from '@skynexui/components';
+import React, { useState } from 'react';
 import appConfig from "../config.json"
 
 function GlobalStyle() {
@@ -59,7 +60,9 @@ function Titulo(props) {
 //  export default HomePage
 
 export default function PaginaInicial() {
-    const username = 'amanda-estrela';
+   // const username = 'amanda-estrela';
+   const [username, setUsername] = React.useState('amanda-estrela');
+   
 
     return (
         <>
@@ -100,7 +103,30 @@ export default function PaginaInicial() {
                             {appConfig.name}
                         </Text>
 
+                       {/* <input
+                            type={Text}
+                            value={username}
+                            onChange={ function(event){
+                                console.log('usuário dgitou, event.target.value');
+                                //onde está o valor?
+                                const valor = event.target.value;
+                                //trocar o valor da vaiável
+                                setUsername(valor);
+                            } 
+                            
+                            }
+                        />
+                        */}
                         <TextField
+                            value={username}
+                            onChange={ function(event){
+                                console.log('usuário dgitou, event.target.value');
+                                //onde está o valor?
+                                const valor = event.target.value;
+                                //trocar o valor da vaiável
+                                setUsername(valor);
+                                }
+                            }
                             fullWidth
                             textFieldColors={{
                                 neutral: {
@@ -148,7 +174,7 @@ export default function PaginaInicial() {
                                 marginBottom: '16px',
 
                             }}
-                            src={`https://github.com/${"amanda-estrela"}.png`}
+                            src={`https://github.com/${username}.png`}
                         />
                         <Text
                             variant="body4"
@@ -159,7 +185,7 @@ export default function PaginaInicial() {
                                 borderRadius: '1000px'
                             }}
                         >
-                            {"amanda-estrela"}
+                            {username}
                         </Text>
                     </Box>
                     {/* Photo Area */}
