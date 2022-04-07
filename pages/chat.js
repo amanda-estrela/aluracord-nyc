@@ -25,14 +25,16 @@ export default function ChatPage() {
   }, []);
 
   function handleNovaMensagem(novaMensagem) {
-    setListaDeMensagens([
-      ...listaDeMensagens,
-      novaMensagem,
-    ]); const mensagem = {
-      // id: listaDeMensagens.length + 1,
+    const mensagem = {
+      id: MessageList.length+1,
       de: 'amanda-estrela',
       texto: novaMensagem,
-    };
+    }
+    setListaDeMensagens([
+       mensagem,
+       ...listaDeMensagens,
+     ,
+    ]); setMensagem('');
 
     supabaseClient
       .from('mensagens')
@@ -89,16 +91,14 @@ export default function ChatPage() {
           }}
         >
           
-          <MessageList />
-      
-          {listaDeMensagens.map((mensagemAtual) => {
-            console.log(mensagemAtual)
+          <MessageList mensagens={listaDeMensagens}/>
+          {/*{listaDeMensagens.map((mensagemAtual) => {
                         return (
-                            <li>
-                                {mensagemAtual}
+                            <li key={mensagemAtual.id}>
+                                {mensagemAtual.de}: {mensagemAtual.texto}
                             </li>
                         )
-                    })} 
+                    })} */}
           <Box
             as="form"
             styleSheet={{
@@ -157,6 +157,7 @@ function Header() {
 }
 
 function MessageList(props) {
+  console.log(props)
   return (
     <Box
       tag="ul"
