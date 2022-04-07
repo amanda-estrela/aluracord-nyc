@@ -7,7 +7,7 @@
   "author": "Amanda Estrela <efernandes.amanda@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "@skynexui/components": "^1.24.2",
+    "@skynexui/components": "^1.25.0",
     "@supabase/supabase-js": "^1.29.4",
     "next": "^12.1.4",
     "react": "^18.0.0",

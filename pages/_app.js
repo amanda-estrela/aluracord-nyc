@@ -30,10 +30,10 @@ function GlobalStyle() {
 export default function CustomApp({ Component, pageProps }) {
     return(
         <>
-            <GlobalStyle/>
-            <Component{... pageProps}/>
+            <GlobalStyle />
+            <Component{... pageProps} />
         </>
-    )
+    );
   }
 
  
