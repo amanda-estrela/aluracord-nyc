@@ -4,8 +4,8 @@ import appConfig from '../config.json';
 import { createClient } from '@supabase/supabase-js'
 
 // Como fazer AJAX: https://medium.com/@omariosouto/entendendo-como-fazer-ajax-com-a-fetchapi-977ff20da3c6
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MDg2OTA3MywiZXhwIjoxOTU2NDQ1MDczfQ.343ibq7UYFPDdyfsfGmEqUma01RW7P7KC9U2MDAGSkI';
-const SUPABASE_URL = 'https://kysxypdmtxjlkdysdlas.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzYwMzAwMiwiZXhwIjoxOTU5MTc5MDAyfQ.K-ihSe2jY8aeixLnd889qfnIMzY5f02P1AocYmxeNH0s';
+const SUPABASE_URL = 'https://gnwpkbrauapnhmcleqjk.supabase.co';
 const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 
@@ -26,7 +26,7 @@ export default function ChatPage() {
 
   function handleNovaMensagem(novaMensagem) {
     const mensagem = {
-      id: MessageList.length+1,
+      //id: listaDeMensagens.length+1,
       de: 'amanda-estrela',
       texto: novaMensagem,
     }
