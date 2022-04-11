@@ -4,7 +4,7 @@ import appConfig from '../config.json';
 import { createClient } from '@supabase/supabase-js'
 
 // Como fazer AJAX: https://medium.com/@omariosouto/entendendo-como-fazer-ajax-com-a-fetchapi-977ff20da3c6
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzYwMzAwMiwiZXhwIjoxOTU5MTc5MDAyfQ.K-ihSe2jY8aeixLnd889qfnIMzY5f02P1AocYmxeNH0s';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzYwMzAwMiwiZXhwIjoxOTU5MTc5MDAyfQ.K-ihSe2jY8aeixLnd889qfnIMzY5f02P1AocYmxeNH0';
 const SUPABASE_URL = 'https://gnwpkbrauapnhmcleqjk.supabase.co';
 const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
@@ -29,28 +29,26 @@ export default function ChatPage() {
       //id: listaDeMensagens.length+1,
       de: 'amanda-estrela',
       texto: novaMensagem,
-    }
+    };
+
+    supabaseClient
+      .from('mensagens')
+      .insert([
+        mensagem
+      ])
+      .then(({data})=>{
+        setListaDeMensagens([
+          data[0],
+          ...listaDeMensagens,
+        ])
+
+      })
+
     setListaDeMensagens([
        mensagem,
        ...listaDeMensagens,
      ,
     ]); setMensagem('');
-
-    supabaseClient
-      .from('mensagens')
-      .insert([
-        // Tem que ser um objeto com os MESMOS CAMPOS que você escreveu no supabase
-        mensagem
-      ])
-      .then(({ data }) => {
-        
-        setListaDeMensagens([
-          data[0],
-          ...listaDeMensagens,
-        ]);
-      });
-
-    setMensagem('');
   }
 
   return (
